@@ -1,0 +1,3 @@
+
+
+helloWebpack();
