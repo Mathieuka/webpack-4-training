@@ -1,12 +1,29 @@
 const path = require("path");
 
 module.exports = {
-    // defining entry point of the bundle
+    // defining entry point of the bundle.
     entry:"./src/index.js",
-    // defining the output point of the bundle
+    // defining the output point of the bundle.
     output: {
         filename: "bundle.js",
-        path: path.resolve(__dirname, "./dist") // here we need pass absolute path
+        path: path.resolve(__dirname, "./dist") // Here we need pass absolute path.
     },
-    mode: "none"
+    mode: "none",
+    module: {
+        rules: [
+            {
+                //Example => Every time we try to import a jpg file, Webpack will check if the rules is present.
+                test: /\.(png|jpg)$/,   // For add an image. 
+                use: [ // Here we specify wich loader should be used by webpack.
+                     "file-loader"
+                ]
+            },
+            // { // xml rules is just an example.
+            //     test: /\.(xml)$/,
+            //     use: [
+            //         "xml-loader" 
+            //     ]
+            // }
+        ]
+    }
 }
