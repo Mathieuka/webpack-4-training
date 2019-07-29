@@ -19,7 +19,11 @@ module.exports = {
                 use: [ // Here we specify wich loader should be used by webpack.
                      "file-loader"
                 ]
-            }
+            },
+            {
+                test: /\.css$/i,
+                use: ['style-loader', 'css-loader'],
+            },
         ]
     }
 }
