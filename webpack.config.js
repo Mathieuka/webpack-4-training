@@ -1,17 +1,10 @@
 const path = require("path");
 const TerserPlugin = require('terser-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 
 
 module.exports = {
-    // TerserPlugin for the uglification
-    optimization: {
-        minimize: true,
-        minimizer: [
-            new TerserPlugin({
-                test: /\.js(\?.*)?$/i
-            }
-        )],
-    },
     // defining entry point of the bundle.
     entry:"./src/index.js",
     // defining the output point of the bundle.
@@ -22,6 +15,15 @@ module.exports = {
                             // example if the app is deploy the public path is http://mydomain.com/
     },
     mode: "none",
+    // TerserPlugin for the uglification
+    optimization: {
+        minimize: true,
+        minimizer: [
+            new TerserPlugin({
+                test: /\.js(\?.*)?$/i
+            }
+        )],
+    },
     module: {
         rules: [
             {
@@ -42,14 +44,41 @@ module.exports = {
                      "file-loader"
                 ]
             },
-            {
-                test: /\.css$/i,
-                use: ['style-loader', 'css-loader'],
-            },
+            // {
+            //     test: /\.css$/i,
+            //     use: [
+            //         {
+            //             loader: MiniCssExtractPlugin.loader,
+            //             options: {
+            //               // you can specify a publicPath here
+            //               // by default it uses publicPath in webpackOptions.output
+            //             //   publicPath: '../',
+            //             //   hmr: process.env.NODE_ENV === 'development',
+            //             },
+            //         },
+            //         'style-loader', 'css-loader'],
+            // },
             {
                 test: /\.scss$/i,
-                use: ['style-loader', 'css-loader', 'sass-loader'],
+                use: [{
+                    loader: MiniCssExtractPlugin.loader,
+                    options: {
+                      // you can specify a publicPath here
+                      // by default it uses publicPath in webpackOptions.output
+                    //   publicPath: '../',
+                    //   hmr: process.env.NODE_ENV === 'development',
+                    },
+                }, 'css-loader', 'sass-loader'],
             },
         ]
-    }
+    },
+    plugins: [
+        new MiniCssExtractPlugin({
+            // Options similar to the same options in webpackOptions.output
+            // all options are optional
+            filename: '[name].css',
+            chunkFilename: '[id].css',
+            ignoreOrder: false, // Enable to remove warnings about conflicting order
+          }),
+    ]
 }

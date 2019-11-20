@@ -1,7 +1,6 @@
 
 import "./hello-button.scss";
 
-//button component
 class HelloButton {
    buttonCssClass = "hello-button-text";
 
