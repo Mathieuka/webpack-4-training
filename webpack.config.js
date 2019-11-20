@@ -1,6 +1,17 @@
 const path = require("path");
+const TerserPlugin = require('terser-webpack-plugin');
+
 
 module.exports = {
+    // TerserPlugin for the uglification
+    optimization: {
+        minimize: true,
+        minimizer: [
+            new TerserPlugin({
+                test: /\.js(\?.*)?$/i
+            }
+        )],
+    },
     // defining entry point of the bundle.
     entry:"./src/index.js",
     // defining the output point of the bundle.
@@ -13,6 +24,17 @@ module.exports = {
     mode: "none",
     module: {
         rules: [
+            {
+                test: /\.m?js$/,
+                exclude: /(node_modules)/,
+                use: {
+                  loader: 'babel-loader',
+                  options: {
+                    presets: ['@babel/preset-env'],
+                    plugins: ["@babel/plugin-proposal-class-properties"]
+                  }
+                }
+            },
             {   
                 //Example => Every time we try to import a jpg file, Webpack will check if the rules is present.
                 test: /\.(png|jpg)$/,   // For add an image. 
