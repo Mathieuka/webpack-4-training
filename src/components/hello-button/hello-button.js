@@ -1,8 +1,10 @@
 
-import "./hello-button.css";
+import "./hello-button.scss";
 
 //button component
 class HelloButton {
+   buttonCssClass = "hello-button-text";
+    
    render() {
        const button = document.createElement("button");
        button.innerHTML = "Hello button";
@@ -11,7 +13,7 @@ class HelloButton {
        button.onclick = function(){
            const p = document.createElement("p");
            p.innerHTML = "Hello button";
-           p.classList.add("hello-button-text")
+           p.classList.add(this.buttonCssClass);
            body.appendChild(p);
        };
        body.appendChild(button);
