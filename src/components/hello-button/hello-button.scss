@@ -1,18 +1,18 @@
 
 $font-size: 20px;
 $button-background-color: green;
-$button-font-color:white;
+$button-font-color:blue;
 $text-font-color: red;
 
 .hello-button{
-     font-size: 20px;
+     font-size: $font-size;
      padding: 7px 15px;
-     background: green;
-     color: red;
+     background: $button-background-color;
+     color: $text-font-color;
      outline: none;
 }
 
 .hello-button-text{
-    color: white;
+    color: $button-font-color;
     font-weight: bold
 }

@@ -1,6 +1,8 @@
+
 import HelloButton from "./components/hello-button/hello-button";
 import addImage from "./add-image";
+import Heading from "./components/heading/heading";
 
-const helloButtonComponent = new HelloButton();
-helloButtonComponent.render();
+Heading();
+HelloButton();
 addImage(); 

@@ -44,31 +44,13 @@ module.exports = {
                      "file-loader"
                 ]
             },
-            // {
-            //     test: /\.css$/i,
-            //     use: [
-            //         {
-            //             loader: MiniCssExtractPlugin.loader,
-            //             options: {
-            //               // you can specify a publicPath here
-            //               // by default it uses publicPath in webpackOptions.output
-            //             //   publicPath: '../',
-            //             //   hmr: process.env.NODE_ENV === 'development',
-            //             },
-            //         },
-            //         'style-loader', 'css-loader'],
-            // },
+            {
+                test: /\.css$/i,
+                use: [MiniCssExtractPlugin.loader, 'css-loader'],
+            },
             {
                 test: /\.scss$/i,
-                use: [{
-                    loader: MiniCssExtractPlugin.loader,
-                    options: {
-                      // you can specify a publicPath here
-                      // by default it uses publicPath in webpackOptions.output
-                    //   publicPath: '../',
-                    //   hmr: process.env.NODE_ENV === 'development',
-                    },
-                }, 'css-loader', 'sass-loader'],
+                use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
             },
         ]
     },
@@ -76,9 +58,9 @@ module.exports = {
         new MiniCssExtractPlugin({
             // Options similar to the same options in webpackOptions.output
             // all options are optional
-            filename: '[name].css',
-            chunkFilename: '[id].css',
-            ignoreOrder: false, // Enable to remove warnings about conflicting order
-          }),
+            filename: 'style.css',
+            // chunkFilename: '[id].css',
+            // ignoreOrder: false, // Enable to remove warnings about conflicting order
+          })
     ]
 }

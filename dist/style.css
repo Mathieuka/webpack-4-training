@@ -6,6 +6,9 @@
   outline: none; }
 
 .hello-button-text {
-  color: white;
+  color: blue;
   font-weight: bold; }
+
+h1 {
+  color: gray; }
 

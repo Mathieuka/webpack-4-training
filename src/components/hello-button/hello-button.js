@@ -1,22 +1,23 @@
-
 import "./hello-button.scss";
 
-class HelloButton {
-   buttonCssClass = "hello-button-text";
 
-   render() {
-       const button = document.createElement("button");
-       button.innerHTML = "Hello button";
-       button.classList.add("hello-button");
-       const body = document.querySelector("body");
-       button.onclick = () => {
-           const p = document.createElement("p");
-           p.innerHTML = "Hello button";
-           p.classList.add(this.buttonCssClass);
-           body.appendChild(p);
-       };
-       body.appendChild(button);
-   }
-}
+const helloButton = () => {
+    
+    const button = document.createElement("button");
+    button.innerHTML = "Hello button";
+    button.classList.add("hello-button");
+    const body = document.querySelector("body");
 
-export default HelloButton;
+    button.onclick = () => {
+        const p = document.createElement("p");
+        p.innerHTML = "Hello button";
+        p.classList.add("hello-button-text");
+        body.appendChild(p);
+    };
+    
+    body.appendChild(button);
+
+    return button
+ }
+
+export default helloButton;
