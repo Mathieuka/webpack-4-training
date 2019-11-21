@@ -1,7 +1,8 @@
 const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin'); // Uglify the bundle
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // Extract the css in specific style bundle
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
 // module.exports = {
@@ -81,7 +82,7 @@ var distConfig = Object.assign({}, config, {
     output: {
         filename: 'bundle.[contenthash].js',
         path: path.resolve(__dirname, './dist'), // Here we need pass absolute path.
-        publicPath: 'dist/' // IMPORTANT: here we specify the public path, the public path tells where all the generated file are located.
+        publicPath: './' // IMPORTANT: here we specify the public path, the public path tells where all the generated file are located.
                             // example if the app is deploy the public path is http://mydomain.com/
     },
     mode: 'none',
@@ -138,6 +139,13 @@ var distConfig = Object.assign({}, config, {
                 path.join(process.cwd(), 'build_example/**/*')
 
             ]
+        }),
+        new HtmlWebpackPlugin({
+            title: 'Hello people',
+            filename: 'subfolder/index_folder_customized.html',
+            meta: {
+                description: 'Some description'
+            }
         })
     ]
 })
