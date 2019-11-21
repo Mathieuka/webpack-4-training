@@ -1,5 +1,7 @@
 import "./heading.scss";
 
+
+
 const heading = () => {
     const h1 = document.createElement('h1');
     const body = document.querySelector('body');
