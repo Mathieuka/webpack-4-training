@@ -6,3 +6,4 @@ import Heading from "./components/heading/heading";
 Heading();
 HelloButton();
 addImage(); 
+

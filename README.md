@@ -1,5 +1,5 @@
 # build application with webpack
     - npm run build
 # absolute path for browser
-   {pwd}/index.html
+   {pwd of the root project}/index.html
     
