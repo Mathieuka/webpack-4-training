@@ -17,6 +17,13 @@ module.exports = {
                             // example if the app is deploy the public path is http://mydomain.com/
     },
     mode: 'production',
+    optimization: {     // that is for create a separate bundle for some common dependencies like Lodash and other libraries or framework, 
+        splitChunks: {  // think to add to HtmlWebpackPlugin chunks for integrated vendor.
+            chunks: 'all',
+            minSize: 5000, //specific min size to split in a specific bundle vendor (example for react)
+            automaticNameDelimiter: '_' // custom name delimiter
+        }
+    },
     module: {
         rules: [
             {
@@ -67,7 +74,7 @@ module.exports = {
             meta: {
                 description: 'Some hello-world description'
             },
-            chunks: ['hello-world'] // specifies which bundle is used for this .html
+            chunks: ['hello-world', 'vendors~hello-world~kiwi'] // specifies which bundle is used for this .html
         }),
         new HtmlWebpackPlugin({
             title: 'Kiwi ',
@@ -75,7 +82,7 @@ module.exports = {
             meta: {
                 description: 'Some kiwi description'
             },
-            chunks: ['kiwi'] // specifies which bundle is used .html
+            chunks: ['kiwi', 'vendors~hello-world~kiwi'] // specifies which bundle is used .html
         })
     ]
  }
