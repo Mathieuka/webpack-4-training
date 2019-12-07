@@ -8,11 +8,17 @@ module.exports = {
     // defining the output point of the bundle.
     output: {
         filename: 'bundle.js',
-        path: path.resolve(__dirname, './dist'), // Here we need pass absolute path.
-        publicPath: '../' // IMPORTANT: here we specify the public path, the public path tells where all the generated file are located.
+        path: path.resolve(__dirname, 'dist'), // Here we need pass absolute path.
+        publicPath: '' // IMPORTANT: here we specify the public path, the public path tells where all the generated file are located.
                             // example if the app is deploy the public path is http://mydomain.com/
     },
     mode: 'development',
+    devServer: {
+        contentBase: path.resolve(__dirname, 'dist'),
+        //compress: true,
+        index: 'index_folder_customized.html',
+        port: 9000
+    },
     module: {
         rules: [
             {
@@ -53,7 +59,7 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             title: 'Hello people',
-            filename: 'subfolder/index_folder_customized.html',
+            filename: 'index_folder_customized.html',
             meta: {
                 description: 'Some description'
             }

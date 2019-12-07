@@ -8,7 +8,7 @@ module.exports = {
     entry:'./src/index.js',
     // defining the output point of the bundle.
     output: {
-        filename: 'bundle.[contenthash].js',
+        filename: 'bundle.[hash].js',
         path: path.resolve(__dirname, './dist'), // Here we need pass absolute path.
         publicPath: '../' // IMPORTANT: here we specify the public path, the public path tells where all the generated file are located.
                             // example if the app is deploy the public path is http://mydomain.com/
@@ -56,7 +56,6 @@ module.exports = {
             cleanOnceBeforeBuildPatterns: [
                 '**/*', // this means clean all file bundle in publicPath
                 path.join(process.cwd(), 'build_example/**/*')
-
             ]
         }),
         new HtmlWebpackPlugin({
