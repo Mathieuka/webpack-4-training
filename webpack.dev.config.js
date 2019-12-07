@@ -16,7 +16,7 @@ module.exports = {
     devServer: {
         contentBase: path.resolve(__dirname, 'dist'),
         //compress: true,
-        index: 'index_folder_customized.html',
+        index: 'hello-world.html',
         port: 9000
     },
     module: {
@@ -59,7 +59,7 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             title: 'Hello people',
-            filename: 'index_folder_customized.html',
+            filename: 'hello-world.html',
             meta: {
                 description: 'Some description'
             }

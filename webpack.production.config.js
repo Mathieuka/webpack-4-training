@@ -62,11 +62,20 @@ module.exports = {
             ]
         }),
         new HtmlWebpackPlugin({
-            title: 'Hello people',
-            filename: 'subfolder/index_folder_customized.html',
+            title: 'Hello world',
+            filename: 'hello-world/hello-world.html',
             meta: {
-                description: 'Some description'
-            }
+                description: 'Some hello-world description'
+            },
+            chunks: ['hello-world'] // specifies which bundle is used for this .html
+        }),
+        new HtmlWebpackPlugin({
+            title: 'Kiwi ',
+            filename: 'kiwi/kiwi.html',
+            meta: {
+                description: 'Some kiwi description'
+            },
+            chunks: ['kiwi'] // specifies which bundle is used .html
         })
     ]
  }
