@@ -5,7 +5,6 @@ const heading = () => {
     const body = document.querySelector('body');
     h1.innerHTML = 'Webpack is yataaaa !';
     body.appendChild(h1);
-    return h1;
 }
 
 export default heading;

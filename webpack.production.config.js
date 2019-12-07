@@ -5,10 +5,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
 module.exports = {
-    entry:'./src/index.js',
+    entry:{
+        'hello-world': './src/hello-world.js',
+        'kiwi': './src/kiwi.js'
+    },
     // defining the output point of the bundle.
     output: {
-        filename: 'bundle.[hash].js',
+        filename: '[name].[contenthash].js',
         path: path.resolve(__dirname, './dist'), // Here we need pass absolute path.
         publicPath: '../' // IMPORTANT: here we specify the public path, the public path tells where all the generated file are located.
                             // example if the app is deploy the public path is http://mydomain.com/
@@ -48,7 +51,7 @@ module.exports = {
         new MiniCssExtractPlugin({
             // Options similar to the same options in webpackOptions.output
             // all options are optional
-            filename: 'style.[contenthash].css',
+            filename: '[name].[contenthash].css',
             // chunkFilename: '[id].css',
             // ignoreOrder: false, // Enable to remove warnings about conflicting order
           }),
