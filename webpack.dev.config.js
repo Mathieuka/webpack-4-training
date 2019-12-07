@@ -4,10 +4,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
 module.exports = {
-    entry:'./src/index.js',
+    entry:{
+        'hello-world': './src/hello-world.js',
+        'kiwi': './src/kiwi.js'
+    },
     // defining the output point of the bundle.
     output: {
-        filename: 'bundle.js',
+        filename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist'), // Here we need pass absolute path.
         publicPath: '' // IMPORTANT: here we specify the public path, the public path tells where all the generated file are located.
                             // example if the app is deploy the public path is http://mydomain.com/
@@ -58,11 +61,20 @@ module.exports = {
             ]
         }),
         new HtmlWebpackPlugin({
-            title: 'Hello people',
             filename: 'hello-world.html',
+            title: 'Hello world',
             meta: {
-                description: 'Some description'
-            }
+                description: 'Some hello-world description'
+            },
+            chunks: ['hello-world']
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'kiwi.html',
+            title: 'Kiwi',          
+            meta: {
+                description: 'Some kiwi description'
+            },
+            'chunks':['kiwi']
         })
     ]
 }
